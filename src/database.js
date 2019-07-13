@@ -2,7 +2,6 @@
 const config = require('./config');
 
 const isLambda = require('is-lambda');
-const _get = require('lodash.get');
 const AWS = require('aws-sdk');
 
 if (!isLambda) {
@@ -70,8 +69,7 @@ module.exports = {
                         resolve(results.Count + 1);
                     }
                 );
-            }
-            catch (e) {
+            } catch (e) {
                 reject(e);
             }
         });
