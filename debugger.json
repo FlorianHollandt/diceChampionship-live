@@ -1,0 +1,10 @@
+{
+    "requestBuilder": {
+      "selected": [
+          "LAUNCH",
+          "YesIntent",
+          "NoIntent",
+          "END"
+        ]
+    }
+  }
