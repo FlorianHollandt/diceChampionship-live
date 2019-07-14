@@ -1,7 +1,7 @@
 {
     "translation": {
         "welcome-new": "Welcome to dice championship! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Let's see how high you can score by rolling ten dice.",
-        "welcome-returning": "Welcome back to dice championship! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/>",
+        "welcome-returning": "Welcome back to dice championship! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Your current highscore is <say-as interpret-as='cardinal'>{{score}}</say-as>, earning you rank <say-as interpret-as='cardinal'>{{rank}}</say-as> of the leaderboard. Get ready for action!",
         "confirm": [
             "Awesome!",
             "Great!",

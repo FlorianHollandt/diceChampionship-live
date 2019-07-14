@@ -55,7 +55,22 @@ app.setHandler({
         if (this.$user.$data.rounds.total === 0) {
             this.$speech.t('welcome-new');
         } else {
-            this.$speech.t('welcome-returning');
+            const playerId = this.$user.$data.playerId;
+            const highscore = this.$user.$data.previousHighscore;
+            console.log(`Highscore: ${highscore}`);
+
+            console.time('database.getRank() ');
+            const rank = await database.getRank(playerId, highscore);
+            console.timeEnd('database.getRank() ');
+            console.log(`Rank: ${rank}`);
+
+            this.$speech.t(
+                'welcome-returning',
+                {
+                    score: highscore,
+                    rank: rank,
+                }
+            );
         }
 
         return this.toIntent('_rollDice');
