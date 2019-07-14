@@ -44,6 +44,7 @@ module.exports = {
             numberOfDice: 10,
             sidesPerDice: 6,
         },
+        version: process.env.VERSION
     },
  };
  

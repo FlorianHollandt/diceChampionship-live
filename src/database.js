@@ -16,7 +16,7 @@ if (!isLambda) {
 
 module.exports = {
 
-    submitScore: function(playerId, score, rounds) {
+    submitScore: function(playerId, score, rounds, platform, locale, userStatus='default') {
         return new Promise(async (resolve, reject) => {
             try {
                 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -25,6 +25,11 @@ module.exports = {
                     id: playerId,
                     score: score,
                     rounds: rounds,
+                    rounds: rounds,
+                    platform: platform,
+                    locale: locale,
+                    userStatus: userStatus,
+                    version: config.custom.version,
                     }, 
                     // ReturnConsumedCapacity: "TOTAL", 
                     TableName : config.custom.DynamoDb.tableName,

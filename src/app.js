@@ -114,7 +114,13 @@ app.setHandler({
         
         if (sumOfDice > previousHighscore) {
             console.time('database.submitScore() ');
-            await database.submitScore(playerId, sumOfDice, totalRounds);
+            await database.submitScore(
+                playerId,
+                sumOfDice,
+                totalRounds,
+                this.getPlatformType(),
+                this.getLocale()
+            );
             console.timeEnd('database.submitScore() ');
 
             this.$user.$data.previousHighscore = sumOfDice;
