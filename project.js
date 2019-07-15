@@ -55,6 +55,12 @@ module.exports = {
 	stages: {
 		local: {
 			endpoint: '${JOVO_WEBHOOK_URL}',
+			deploy: {
+				target: [
+					'info',
+					'model'
+				],
+			},
 			alexaSkill: {
 				languageModel: {
 					'en-US': {
