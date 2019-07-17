@@ -1,5 +1,5 @@
 {
-	"invocation": "dice championship",
+	"invocation": "dice tournament",
 	"intents": [
 		{
 			"name": "YesIntent",

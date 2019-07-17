@@ -61,28 +61,19 @@ module.exports = {
 					'model'
 				],
 			},
-			alexaSkill: {
-				languageModel: {
-					'en-US': {
-						invocation: 'dice tournament'
-					}
-				}
-			},
 		},
 		staging: {
 			endpoint: process.env.LAMBDA_ARN_STAGING,
-			alexaSkill: {
-				languageModel: {
-					'en-US': {
-						invocation: 'dice tournament'
-					}
-				}
-			},
 		},
 		live: {
 			endpoint: process.env.LAMBDA_ARN_LIVE,
 			alexaSkill: {
 				skillId: process.env.SKILL_ID_LIVE,
+				languageModel: {
+					'en-US': {
+						invocation: 'dice championship',
+					}
+				},
 				manifest: {
 					publishingInformation: {
 						locales: {
