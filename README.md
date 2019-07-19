@@ -102,7 +102,7 @@ Ultimately, this version of Dice Championship will combine the most publication-
    -  Give your Lambda a Node 8.10 runtime (or above) and the existing role 'diceChampionship_role' from **step 2**.
    -  Add **'Alexa Skills Kit' as a trigger** for your Lambda function. For now you can disable the restriction to a defined Skill ID.
    -  Copy the **environment variables** `DYNAMODB_TABLE_NAME_USERS`, `DYNAMODB_TABLE_NAME_SCORES` and their respective values from your local `.env` file to the Lambda's environment variable section.
-   -  Copy the **Lambda's ARN** into your local `.env` file, as the value of `SKILL_ID_STAGING` (more on staging below).
+   -  Copy the **Lambda's ARN** into your local `.env` file, as the value of `LAMBDA_ARN_STAGING` (more on staging below).
 5. **Creating the Alexa Skill**
    - This is something you could do directly in the Alexa developer console, but here we're using the <a href="https://github.com/jovotech/jovo-cli">Jovo CLI</a> because it's super convenient. So be sure to have the Jovo CLI installed and optimally your <a href="https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html">ASK CLI and AWS CLI profiles set up</a>.
    - Write the name of the ASK CLI profile you plan to use into your local `.env` file as e.g. `ASK_PROFILE='default'`.
