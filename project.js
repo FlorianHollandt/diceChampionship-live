@@ -4,40 +4,102 @@
 
 require('dotenv').config();
 
+const manifest = {
+	privacyAndCompliance: {
+		locales: {
+			'en': {
+				privacyPolicyUrl: "",
+				termsOfUseUrl: ""
+			},
+		},
+	},
+	publishingInformation: {
+		locales: {
+			'en': {
+				stage: {
+					staging: {
+						name: 'Dice Tournament',
+						summary: "👉 Can throw the dice better than everyone else? 🎲 Find you just how lucky you are! 🍀",
+						description: "Staging Skill for Dice Championship",
+						examplePhrases: [
+							"Alexa open Dice Tournament"
+						],
+						smallIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_small.png",
+						largeIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_large.png",
+						keywords: [
+							"test"
+						],
+					},
+					live: {
+						name: 'Dice Championship',
+						summary: "👉 Can throw the dice better than everyone else? 🎲 Find you just how lucky you are! 🍀",
+						description: "Dice Championship lets you play dice against the whole world! How high can you make it up the highscore?\n\nThe rules are simple:\n- For each throw, your score is the sum of randomly thrown 10 six-sided dice\n- Only your best score ever determines your place in the highscore\n- If you and another player have the same score, the one of you who achived it first gets the higher rank\n\n...now how high can YOU score? \n\nRight now this Skill is as simple as any Skill can be, but there are big plans for Dice Championship! Stay tuned for screen support, high-quality audio, premium content and more!\n\nHave fun, and good luck!",
+						examplePhrases: [
+							"Alexa open Dice Championship"
+						],
+						smallIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_small.png",
+						largeIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_large.png",
+						keywords: [
+							"game",
+							"fun",
+							"match",
+							"win",
+							"epic",
+							"challenge",
+							"happy",
+							"exciting",
+							"highscore",
+							"leaderboard",
+							"die",
+							"dice",
+							"champion",
+							"winner",
+							"challenge",
+							"challenger",
+							"diversion",
+							"entertaining",
+							"statistics",
+							"chance",
+							"gambling",
+							"winning",
+							"perform",
+							"result",
+							"competition"
+						],
+					},
+				},
+			},
+		}
+	}
+};
+
 module.exports = {
 	alexaSkill: {
 		nlu: {
 			name: 'alexa',
+			lang: {
+				en: [
+					'en-US',
+					'en-CA',
+				]
+			  }
 		},
 		manifest: {
 			privacyAndCompliance: {
 				locales: {
-				  'en-US': {
-					privacyPolicyUrl: "",
-					termsOfUseUrl: ""
-				  }
+					'en-US': manifest.privacyAndCompliance.locales.en,
+					'en-CA': manifest.privacyAndCompliance.locales.en,
 				},
 				allowsPurchases: false,
 				usesPersonalInfo: false,
 				isChildDirected: false,
 				isExportCompliant: true,
 				containsAds: false
-			  },
+			},
 			publishingInformation: {
 			   locales: {
-				  'en-US': {
-					name: 'Dice Tournament',
-					summary: "👉 Can throw the dice better than everyone else? 🎲 Find you just how lucky you are! 🍀",
-					description: "Staging Skill for Dice Championship",
-					examplePhrases: [
-						"Alexa open Dice Tournament"
-					],
-					smallIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_small.png",
-					largeIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_large.png",
-					keywords: [
-						"test"
-					],
-				  },
+				  'en-US': manifest.publishingInformation.locales.en.stage.staging,
+				  'en-CA': manifest.publishingInformation.locales.en.stage.staging,
 				},
 				isAvailableWorldwide: true,
 				testingInstructions: "Sample testing instructions",
@@ -77,42 +139,8 @@ module.exports = {
 				manifest: {
 					publishingInformation: {
 						locales: {
-							'en-US': {
-								name: 'Dice Championship',
-								description: "Dice Championship lets you play dice against the whole world! How high can you make it up the highscore?\n\nThe rules are simple:\n- For each throw, your score is the sum of randomly thrown 10 six-sided dice\n- Only your best score ever determines your place in the highscore\n- If you and another player have the same score, the one of you who achived it first gets the higher rank\n\n...now how high can YOU score? \n\nRight now this Skill is as simple as any Skill can be, but there are big plans for Dice Championship! Stay tuned for screen support, high-quality audio, premium content and more!\n\nHave fun, and good luck!",
-								examplePhrases: [
-									"Alexa open Dice Championship"
-								],
-								smallIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_small.png",
-								largeIconUri: "https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_large.png",
-								keywords: [
-									"game",
-									"fun",
-									"match",
-									"win",
-									"epic",
-									"challenge",
-									"happy",
-									"exciting",
-									"highscore",
-									"leaderboard",
-									"die",
-									"dice",
-									"champion",
-									"winner",
-									"challenge",
-									"challenger",
-									"diversion",
-									"entertaining",
-									"statistics",
-									"chance",
-									"gambling",
-									"winning",
-									"perform",
-									"result",
-									"competition"
-								],
-							}
+							'en-US': manifest.publishingInformation.locales.en.stage.live,
+							'en-CA': manifest.publishingInformation.locales.en.stage.live,
 						}
 					}
 				},
