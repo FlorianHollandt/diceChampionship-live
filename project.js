@@ -123,6 +123,17 @@ const manifest = {
 	}
 };
 
+const invocationName = {
+	locales: {
+		'en': {
+			invocation: 'dice championship',
+		},
+		'de': {
+			invocation: 'würfel meisterschaft',
+		},
+	},
+};
+
 module.exports = {
 	alexaSkill: {
 		nlu: {
@@ -187,9 +198,8 @@ module.exports = {
 			alexaSkill: {
 				skillId: process.env.SKILL_ID_LIVE,
 				languageModel: {
-					'en-US': {
-						invocation: 'dice championship',
-					}
+					'en': invocationName.locales.en,
+					'de': invocationName.locales.de,
 				},
 				manifest: {
 					publishingInformation: {
