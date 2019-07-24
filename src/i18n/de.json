@@ -1,0 +1,34 @@
+{
+    "translation": {
+        "welcome-new": "Willkommen bei der Würfel Meisterschaft! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Mal sehen wie viele Punkte Du mit zehn Würfel bekommen kannst.",
+        "welcome-returning": "Willkommen zurück bei der Würfel-Meisterschaft! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Dein aktueller Rekord liegt bei <say-as interpret-as='cardinal'>{{score}}</say-as> Punkten, damit bist Du auf dem <say-as interpret-as='ordinal'>{{rank}}</say-as> Platz der Bestenliste. Mach Dich bereit, jetzt geht es wieder los!",
+        "confirm": [
+            "Großartig!",
+            "Wunderbar!",
+            "Sicher!",
+            "Alles klar!",
+            "Sicher doch!",
+            "Wie Du magst.",
+            "Klingt gut!",
+            "Perfekt!"
+        ],
+        "dice-intro": [
+            "Los gehts!",
+            "Dann wollen wir mal.",
+            "Drei, zwei, eins. Los!"
+        ],
+        "dice-sound": "<audio src='soundbank://soundlibrary/toys_games/board_games/board_games_08'/>",
+        "result-sound-negative": "<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_tally_negative_01'/>",
+        "result-sound-positive": "<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_tally_positive_01'/>",
+        "result-score": "Du liegst bei {{sound}} <say-as interpret-as='cardinal'>{{score}}</say-as> Punkten!",
+        "result-lowerScore": "Damit bleibst Du erstmal auf dem <say-as interpret-as='ordinal'>{{rank}}</say-as> Platz.",
+        "result-newPersonalHighscore": "Herzlichen Glückwunsch, das ist Dein neuer Würfelrekord! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_positive_response_01'/>",
+        "result-higherRank": "Herzlichen Glückwunsch, damit rückst Du auf den <say-as interpret-as='ordinal'>{{rank}}</say-as> Platz der Bestenliste vor! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_positive_response_02'/>",
+        "result-numberOneRank": "Herzlichen Glückwunsch, das ist bisher der Würfelrekord! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_positive_response_03'/>",
+        "prompt-short": "Magst Du es nochmal versuchen?",
+        "prompt-full": "Magst Du direkt Dein Würfelglück versuchen?",
+        "help-launch": "Bei der Würfelmeisterschaft wirfst Du zehn Würfel, und vergleichst Dein Ergebnis mit Spielern aus der ganzen Welt. <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/>",
+        "help-rank": "Du bist aktuell auf Platz <say-as interpret-as='cardinal'>{{rank}}</say-as> der Bestenliste, mit einer persönlichen Rekord-punktzahl von <say-as interpret-as='cardinal'>{{score}}</say-as> Punkten. <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_bridge_01'/>",
+        "goodbye": "Vielen Dank fürs Mitspielen, und bis bald! <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_outro_01'/>"
+    }
+}
