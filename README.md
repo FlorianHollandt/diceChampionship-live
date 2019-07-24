@@ -79,10 +79,10 @@ Here are the differences in detail:<br/>
             Regional availability
         </th>
         <td>
-            Only `en-US` :us:
+            Only <code>en-US</code> :us:
         </td>
         <td>
-            `en-US` :us:, `en-CA` :maple_leaf:, `de-DE` :de:
+            <code>en-US</code> :us:, <code>en-CA</code> :maple_leaf:, <code>de-DE</code> :de:
         </td>
     </tr>
 </table>
