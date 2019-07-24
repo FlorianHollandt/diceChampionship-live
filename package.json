@@ -8,11 +8,11 @@
     "dotenv": "^8.0.0",
     "gulp-cli": "^2.2.0",
     "is-lambda": "^1.0.1",
-    "jovo-db-dynamodb": "^2.2.10",
-    "jovo-framework": "^2.2.13",
-    "jovo-platform-alexa": "^2.2.15",
-    "jovo-platform-googleassistant": "^2.2.13",
-    "jovo-plugin-debugger": "^2.2.11",
+    "jovo-db-dynamodb": "^2.2.11",
+    "jovo-framework": "^2.2.14",
+    "jovo-platform-alexa": "^2.2.16",
+    "jovo-platform-googleassistant": "^2.2.14",
+    "jovo-plugin-debugger": "^2.2.12",
     "murmurhash": "0.0.2"
   },
   "devDependencies": {
