@@ -1,10 +1,10 @@
 
 <img src="https://dicechampionship.s3-eu-west-1.amazonaws.com/diceChampionship_title_live.png">
 
-The Dice Championship project is about exploring how a simple voice app - Dice Championship - can be implemented and extended using different frameworks, platforms and services. It was initiated (and <a href="https://www.amazon.com/dp/B07V41F2LK">published to the Alexa Skill store</a>) by me (<a href="https://twitter.com/FlorianHollandt">Florian Hollandt</a>), but contributions of ideas, implementations and improvements are very welcome. :)
+The Dice Championship project is about exploring how a simple voice app - Dice Championship - can be implemented and extended using different frameworks, platforms and services. It was initiated and published by me (<a href="https://twitter.com/FlorianHollandt">Florian Hollandt</a>), but contributions of ideas, implementations and improvements are very welcome. :)
 
 ## What is this repository about?
-This is the implementation of Dice Championship that actually <a href="https://www.amazon.com/dp/B07V41F2LK">got published to the US Skill Store</a>, and it contains the complete set of features to elevate the Skill from the <a href="https://github.com/FlorianHollandt/diceChampionship-dynamoDb">simplified, easy-to-follow base version</a> to a something that evidently passed certification.
+This is the implementation of Dice Championship that got published to the <a href="https://www.amazon.com/dp/B07V41F2LK">US</a>, <a href="https://www.amazon.ca/dp/B07V41F2LK">(english) Canadian</a> and <a href="https://www.amazon.de/dp/B07V41F2LK">German</a> Alexa Skill Store, and it contains the complete set of features to elevate the Skill from the <a href="https://github.com/FlorianHollandt/diceChampionship-dynamoDb">simplified, easy-to-follow base version</a> to a something that evidently passed certification.
 
 Here are the differences in detail:<br/>
 <table>
