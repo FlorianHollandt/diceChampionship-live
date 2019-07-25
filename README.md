@@ -71,7 +71,7 @@ Here are the differences in detail:<br/>
             Contains attributes `id` and `score`
         </td>
         <td>
-            Contains more attributes (<code>platform</code>, <code>locale</code>, <code>rounds</code> &amp; <code>userStatus</code>)
+            Contains more attributes (<code>platform</code>, <code>locale</code>, <code>rounds</code> &amp; <code>userStatus</code> and <code>date</code>)
         </td>
     </tr>
     <tr>

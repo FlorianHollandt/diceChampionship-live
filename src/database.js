@@ -16,7 +16,7 @@ if (!isLambda) {
 
 module.exports = {
 
-    submitScore: function(playerId, score, rounds, platform, locale, userStatus='default') {
+    submitScore: function(playerId, score, rounds, platform, locale, date, userStatus='default') {
         return new Promise(async (resolve, reject) => {
             try {
                 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -28,6 +28,7 @@ module.exports = {
                     rounds: rounds,
                     platform: platform,
                     locale: locale,
+                    date: date,
                     userStatus: userStatus,
                     version: config.custom.version,
                     }, 
