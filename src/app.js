@@ -62,6 +62,7 @@ app.setHandler({
             console.time('database.getRank() ');
             const rank = await database.getRank(playerId, highscore);
             console.timeEnd('database.getRank() ');
+            this.$user.$data.previousRank = rank;
             console.log(`Rank: ${rank}`);
 
             this.$speech.t(
