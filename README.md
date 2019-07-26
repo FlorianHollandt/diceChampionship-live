@@ -208,7 +208,7 @@ This version uses different, and thus less generic sound effects than the base v
     </tr>
 </table>
 
-All audio files marked with <code>*</code> were produced by <a href="https://audiojungle.net/user/gamechestaudio">the same Audiojunge user</a>, to ensure a consistent audio experience across the Skill. The tally and dice sounds were mixed using GarageBand.
+All audio files marked with <code>*</code> were produced by <a href="https://audiojungle.net/user/gamechestaudio">the same Audiojungle user</a>, to ensure a consistent audio experience across the Skill. The tally and dice sounds were mixed using GarageBand.
 
 I have purchase a single-use license for the Audiojungle sounds mentioned here, so if you plan to use these sounds in your own voice apps, you will need to purchase your own license.
 
