@@ -68,7 +68,7 @@ Here are the differences in detail:<br/>
             Leaderboard
         </th>
         <td>
-            Contains attributes `id` and `score`
+            Contains attributes <code>id</code> and <code>score</code>
         </td>
         <td>
             Contains more attributes (<code>platform</code>, <code>locale</code>, <code>rounds</code> &amp; <code>userStatus</code> and <code>date</code>)
@@ -85,9 +85,132 @@ Here are the differences in detail:<br/>
             <code>en-US</code> :us:, <code>en-CA</code> :maple_leaf:, <code>de-DE</code> :de:
         </td>
     </tr>
+    <tr>
+        <th>
+            Sounds
+        </th>
+        <td>
+            Game show sounds from <a href="https://developer.amazon.com/docs/custom-skills/ask-soundlibrary.html">ASK Sound Library</a>
+        </td>
+        <td>
+            Licensed and remixed sounds from <a href="https://audiojungle.net">Audiojungle</a>
+        </td>
+    </tr>
 </table>
 
 Ultimately, this version of Dice Championship will combine the most publication-worthy features of all implementations within this project.
+
+## Sound effects
+
+This version uses different, and thus less generic sound effects than the base version. It might be educational to have a bit of background on where these sound effects were obtained (short answer: <a href="https://audiojunge.net">Audiojungle</a>) and how they were selected.
+
+<table>
+    <tr>
+        <th>
+            &nbsp;
+        </th>
+        <th>
+            <a href="https://github.com/FlorianHollandt/diceChampionship-dynamoDb">Base version</a>
+        </th>
+        <th>
+            Live Alexa Skill version
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Welcome / intro sound
+        </td>
+        <td>
+            "Gameshow Intro (1)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/victory/8145193">"Victory"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Goodbye / outro sound
+        </td>
+        <td>
+            "Gameshow Outro (1)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/small-success/9934851">"Small Success"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Dice sound
+        </td>
+        <td>
+            "Board Games (8)" ("Toys_Games/Board_Games" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/playing-dice-rolling-6-variations/233027">"Playing Dice - Rolling (6 variations)"</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Tally with positive result
+        </td>
+        <td>
+            "Gameshow Tally Positive (1)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/game-points-count-rapid/19154239">"Game Points Count Rapid"</a> +
+            <a href="https://audiojungle.net/item/small-success/9934851">"Small Success"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Tally with negative result
+        </td>
+        <td>
+            "Gameshow Tally Negative (1)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/game-points-count-rapid/19154239">"Game Points Count Rapid"</a> (shorter version) +
+            <a href="https://audiojungle.net/item/soft-fail/9094400">"Soft Fail"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Minor success (new personal highscore)
+        </td>
+        <td>
+            "Gameshow Positive Response (1)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/victory/8145193">"Victory"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Medium success (Higher rank)
+        </td>
+        <td>
+            "Gameshow Positive Response (2)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/victory/8145193">"Victory"</a> <code>*</code>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Major success (First rank!)
+        </td>
+        <td>
+            "Gameshow Positive Response (3)" ("Gameshow" category)
+        </td>
+        <td>
+            <a href="https://audiojungle.net/item/win-fanfare/9432605">"Win Fanfare"</a> <code>*</code>
+        </td>
+    </tr>
+</table>
+
+All audio files marked with <code>*</code> were produced by <a href="https://audiojungle.net/user/gamechestaudio">the same Audiojunge user</a>, to ensure a consistent audio experience across the Skill. The tally and dice sounds were mixed using GarageBand.
+
+I have purchase a single-use license for the Audiojungle sounds mentioned here, so if you plan to use these sounds in your own voice apps, you will need to purchase your own license.
 
 # Setting up the Live Alexa Skill version
 
