@@ -266,7 +266,7 @@ module.exports = {
                     'es-ES': manifest.publishingInformation.locales.es.stage.staging,
                     'es-MX': manifest.publishingInformation.locales.es.stage.staging,
                     'es-US': manifest.publishingInformation.locales.es.stage.staging,
-                    'it-IT': manifest.publishingInformation.locales.es.stage.staging,
+                    'it-IT': manifest.publishingInformation.locales.it.stage.staging,
                 },
                 isAvailableWorldwide: true,
                 testingInstructions: 'Sample testing instructions',
