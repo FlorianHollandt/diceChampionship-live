@@ -15,7 +15,7 @@ const manifest = {
                 stage: {
                     staging: {
                         name: 'Dice Tournament',
-                        summary: '👉 Can throw the dice better than everyone else? 🎲 Find you just how lucky you are! 🍀',
+                        summary: '👉 Can you throw the dice better than everyone else? 🎲 Find you just how lucky you are! 🍀',
                         description: 'Staging Skill for Dice Championship (EN)',
                         examplePhrases: [
                             'Alexa open Dice Tournament',
@@ -119,6 +119,55 @@ const manifest = {
                     },
                 },
             },
+            'it': {
+                stage: {
+                    staging: {
+                        name: 'Torneo di Dadi',
+                        summary: '👉 Puoi lanciare i dadi meglio degli altri? 🎲 Scopri quanto sei fortunato! 🍀',
+                        description: 'Skill di Staging per il Campionato dei Dadi (EN)',
+                        examplePhrases: [
+                            'Alexa open torneo di dadi',
+                        ],
+                        smallIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_small.png',
+                        largeIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_large.png',
+                        keywords: [
+                            'test',
+                        ],
+                    },
+                    live: {
+                        name: 'Campionato dei Dadi',
+                        summary: '👉 Puoi lanciare dei dadi meglio degli altri? 🎲 Scopri quanto la fortuna è dalla tua parte! 🍀',
+                        description: 'Il Campionato dei Dadi ti permette di sfidarti con giocatori in tutto il mondo! Quanto riuscirai a salire nella classifica?\n\nLe regole sono semplici:\n- Ad ogni lancio di dado, il punteggio è la somma di dieci dadi a 6 facciate, generati in modo completamente casuale.\n- Solo il miglior punteggio ottenuto verrà contato nella classifica mondiale.\n- Se due o più giocatori raggiungono lo stesso punteggio, chi prima ha raggiunto il punteggio avrà il posto più alto in classifica.\n\n...quanti punti riuscirai a fare tu? \n\nPer ora la skill è molto semplice, ma ci sono grandi programmi per il Campionato dei Dadi: supporto per schermi, audio di alta qualità, contenuti premium e tanto altro ancora!\n\nDivertiti, e in bocca al lupo!',
+                        examplePhrases: [
+                            'Alexa apri Campionato dei Dadi',
+                        ],
+                        smallIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_small.png',
+                        largeIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_large.png',
+                        keywords: [
+                            'gioco',
+                            'divertente',
+                            'partita',
+                            'vincita',
+                            'epico',
+                            'sfida',
+                            'happy',
+                            'divertente',
+                            'punteggio',
+                            'classifica',
+                            'dado',
+                            'dadi',
+                            'campione',
+                            'vincitore',
+                            'sfogo',
+                            'intrattenimento',
+                            'statistica',
+                            'probabilità',
+                            'gioco d\'azzardo',
+                            'competizione',
+                        ],
+                    },
+                },
+            },
             'es': {
                 stage: {
                     staging: {
@@ -184,6 +233,9 @@ module.exports = {
                     'es-MX',
                     'es-US',
                 ],
+                it: [
+                    'it-IT'
+                ],
             },
         },
         manifest: {
@@ -195,6 +247,7 @@ module.exports = {
                     'es-ES': manifest.privacyAndCompliance,
                     'es-MX': manifest.privacyAndCompliance,
                     'es-US': manifest.privacyAndCompliance,
+                    'it-IT': manifest.privacyAndCompliance
                 },
                 allowsPurchases: false,
                 usesPersonalInfo: false,
@@ -245,6 +298,7 @@ module.exports = {
                     'en': invocationName.locales.en,
                     'de': invocationName.locales.de,
                     'es': invocationName.locales.es,
+                    'it': invocationName.locales.it,
                 },
                 manifest: {
                     publishingInformation: {
@@ -255,6 +309,7 @@ module.exports = {
                             'es-ES': manifest.publishingInformation.locales.es.stage.live,
                             'es-MX': manifest.publishingInformation.locales.es.stage.live,
                             'es-US': manifest.publishingInformation.locales.es.stage.live,
+                            'it-IT': manifest.publishingInformation.locales.it.stage.live,
                         },
                     },
                 },
