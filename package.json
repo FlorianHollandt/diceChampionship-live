@@ -13,6 +13,8 @@
     "jovo-platform-alexa": "^2.2.16",
     "jovo-platform-googleassistant": "^2.2.14",
     "jovo-plugin-debugger": "^2.2.12",
+    "lodash.template": "^4.5.0",
+    "mem": "^5.1.1",
     "murmurhash": "0.0.2"
   },
   "devDependencies": {
