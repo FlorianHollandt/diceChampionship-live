@@ -161,6 +161,9 @@ const invocationName = {
         'de': {
             invocation: 'würfel meisterschaft',
         },
+        'es': {
+            invocation: 'campeonato de dados',
+        },
     },
 };
 
@@ -249,6 +252,9 @@ module.exports = {
                             'en-US': manifest.publishingInformation.locales.en.stage.live,
                             'en-CA': manifest.publishingInformation.locales.en.stage.live,
                             'de-DE': manifest.publishingInformation.locales.de.stage.live,
+                            'es-ES': manifest.publishingInformation.locales.es.stage.live,
+                            'es-MX': manifest.publishingInformation.locales.es.stage.live,
+                            'es-US': manifest.publishingInformation.locales.es.stage.live,
                         },
                     },
                 },
