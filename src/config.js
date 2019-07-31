@@ -8,27 +8,27 @@ module.exports = {
     logging: {
         request: true,
         requestObjects: [
-          'request'
+            'request',
         ],
         response: true,
         responseObjects: [
-          'response.outputSpeech.ssml'
+            'response.outputSpeech.ssml',
         ],
     },
     intentMap: {
-       'AMAZON.StopIntent': 'END',
-       'AMAZON.CancelIntent': 'END',
-       'AMAZON.NoIntent': 'END',
-       'AMAZON.YesIntent': 'YesIntent',
-       'AMAZON.HelpIntent': 'HelpIntent',
+        'AMAZON.StopIntent': 'END',
+        'AMAZON.CancelIntent': 'END',
+        'AMAZON.NoIntent': 'END',
+        'AMAZON.YesIntent': 'YesIntent',
+        'AMAZON.HelpIntent': 'HelpIntent',
     },
     db: {
         DynamoDb: {
             tableName: process.env.DYNAMODB_TABLE_NAME_USERS,
             awsConfig: {
                 accessKeyId: process.env.DYNAMODB_ACCESS_KEY_ID,
-                secretAccessKey: process.env.DYNAMODB_SECRET_ACCESS_KEY, 
-                region:  process.env.DYNAMODB_REGION,
+                secretAccessKey: process.env.DYNAMODB_SECRET_ACCESS_KEY,
+                region: process.env.DYNAMODB_REGION,
             },
         },
     },
@@ -44,7 +44,6 @@ module.exports = {
             numberOfDice: 10,
             sidesPerDice: 6,
         },
-        version: process.env.VERSION
+        version: process.env.VERSION,
     },
- };
- 
+};

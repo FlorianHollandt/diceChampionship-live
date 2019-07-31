@@ -16,24 +16,24 @@ if (!isLambda) {
 
 module.exports = {
 
-    submitScore: function(playerId, score, rounds, platform, locale, date, userStatus='default') {
+    submitScore: function(playerId, score, rounds, platform, locale, date, userStatus = 'default') {
         return new Promise(async (resolve, reject) => {
             try {
                 const docClient = new AWS.DynamoDB.DocumentClient();
                 const parameters = {
                     Item: {
-                    id: playerId,
-                    score: score,
-                    rounds: rounds,
-                    rounds: rounds,
-                    platform: platform,
-                    locale: locale,
-                    date: date,
-                    userStatus: userStatus,
-                    version: config.custom.version,
-                    }, 
-                    // ReturnConsumedCapacity: "TOTAL", 
-                    TableName : config.custom.DynamoDb.tableName,
+                        id: playerId,
+                        score: score,
+                        rounds: rounds,
+                        rounds: rounds,
+                        platform: platform,
+                        locale: locale,
+                        date: date,
+                        userStatus: userStatus,
+                        version: config.custom.version,
+                    },
+                    // ReturnConsumedCapacity: "TOTAL",
+                    TableName: config.custom.DynamoDb.tableName,
                 };
                 console.log(`Putting item now...`);
                 docClient.put(
@@ -57,13 +57,13 @@ module.exports = {
             try {
                 const docClient = new AWS.DynamoDB.DocumentClient();
                 const parameters = {
-                    TableName : config.custom.DynamoDb.tableName,
+                    TableName: config.custom.DynamoDb.tableName,
                     Select: 'COUNT',
                     // ProjectionExpression : 'id',
-                    FilterExpression : "score >= :score_value AND id <> :player_id",
-                    ExpressionAttributeValues:{
-                        ":score_value" : score, 
-                        ":player_id" : playerId, 
+                    FilterExpression: 'score >= :score_value AND id <> :player_id',
+                    ExpressionAttributeValues: {
+                        ':score_value': score,
+                        ':player_id': playerId,
                     },
                 };
                 docClient.scan(
