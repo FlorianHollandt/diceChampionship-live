@@ -191,7 +191,16 @@ app.setHandler({
         if (this.isNewSession()) {
             this.$speech.t('help-launch');
         } else {
-            this.$speech.t('help-rank');
+            const previousRank = this.$user.$data.previousRank;
+            const highscore = this.$user.$data.previousHighscore;
+
+            this.$speech.t(
+                'help-rank',
+                {
+                    rank: previousRank,
+                    score: highscore,
+                }
+            );
         }
 
         this.$speech.t('prompt-full');
