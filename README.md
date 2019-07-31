@@ -82,7 +82,8 @@ Here are the differences in detail:<br/>
             Only <code>en-US</code> :us:
         </td>
         <td>
-            <code>en-US</code> :us:, <code>en-CA</code> :maple_leaf:, <code>de-DE</code> :de:
+            <code>en-US</code> + <code>es-US</code> :us:, <code>en-CA</code> :maple_leaf:, <br/>
+            <code>de-DE</code> :de:, <code>es-ES</code> :es:, <code>es-MX</code> :cactus:
         </td>
     </tr>
     <tr>
