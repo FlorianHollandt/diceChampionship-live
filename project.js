@@ -126,7 +126,7 @@ const manifest = {
                         summary: '👉 Puoi lanciare i dadi meglio degli altri? 🎲 Scopri quanto sei fortunato! 🍀',
                         description: 'Skill di Staging per il Campionato dei Dadi (EN)',
                         examplePhrases: [
-                            'Alexa open torneo di dadi',
+                            'Alexa apri torneo di dadi',
                         ],
                         smallIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_small.png',
                         largeIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_large.png',
@@ -213,6 +213,9 @@ const invocationName = {
         'es': {
             invocation: 'campeonato de dados',
         },
+        'it': {
+            invocation: 'campionato dei dadi',
+        },
     },
 };
 
@@ -234,7 +237,7 @@ module.exports = {
                     'es-US',
                 ],
                 it: [
-                    'it-IT'
+                    'it-IT',
                 ],
             },
         },
@@ -247,7 +250,7 @@ module.exports = {
                     'es-ES': manifest.privacyAndCompliance,
                     'es-MX': manifest.privacyAndCompliance,
                     'es-US': manifest.privacyAndCompliance,
-                    'it-IT': manifest.privacyAndCompliance
+                    'it-IT': manifest.privacyAndCompliance,
                 },
                 allowsPurchases: false,
                 usesPersonalInfo: false,
@@ -263,6 +266,7 @@ module.exports = {
                     'es-ES': manifest.publishingInformation.locales.es.stage.staging,
                     'es-MX': manifest.publishingInformation.locales.es.stage.staging,
                     'es-US': manifest.publishingInformation.locales.es.stage.staging,
+                    'it-IT': manifest.publishingInformation.locales.es.stage.staging,
                 },
                 isAvailableWorldwide: true,
                 testingInstructions: 'Sample testing instructions',
