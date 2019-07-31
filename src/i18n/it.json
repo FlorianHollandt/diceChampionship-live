@@ -1,0 +1,34 @@
+{
+    "translation": {
+        "welcome-new": "Benvenuto al Campionato dei Dadi! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/> Vediamo quanti punti puoi fare tirando dieci dadi.",
+        "welcome-returning": "Bentornato al campionato dei dadi! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/> Il tuo miglior punteggio fin'ora è <say-as interpret-as='cardinal'>{{score}}</say-as>, e sei al <say-as interpret-as='cardinal'>{{rank}}</say-as> posto in classifica. Iniziamo!",
+        "confirm": [
+            "Ottimo!",
+            "Grande!",
+            "Certo!",
+            "Perfetto!",
+            "Fantastico!",
+            "Ok!",
+            "Va bene!",
+            "Certamente!"
+        ],
+        "dice-intro": [
+            "Ecco!",
+            "Vediamo!",
+            "Tiriamo!"
+        ],
+        "dice-sound": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/dice-roll-01.mp3'/>",
+        "result-sound-negative": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/tally-negative.mp3'/>",
+        "result-sound-positive": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/tally-positive.mp3'/>",
+        "result-score": "Il tuo punteggio è di {{sound}} <say-as interpret-as='cardinal'>{{score}}</say-as> punti!",
+        "result-lowerScore": "Per ora rimani al <say-as interpret-as='ordinal'>{{rank}}</say-as> posto in classifica.",
+        "result-newPersonalHighscore": "Congratulazioni, hai ottenuto un nuovo punteggio record! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
+        "result-higherRank": "Congratulazioni, questo nuovo punteggio di porta al <say-as interpret-as='ordinal'>{{rank}}</say-as> posto in classifica! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
+        "result-numberOneRank": "Congratulazioni, è il punteggio più alto fin'ora! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-major.mp3'/>",
+        "prompt-short": "Vuoi riprovare?",
+        "prompt-full": "Vuoi tirare i dadi ora?",
+        "help-launch": "Il Campionato dei Dadi ti permette di lanciare dieci dadi e confrontare il punteggio con giocatori in tutto il mondo. <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/>",
+        "help-rank": "Sei attualmente al <say-as interpret-as='ordinal'>{{rank}}</say-as> posto in classifica, con un record personale di <say-as interpret-as='cardinal'>{{score}}</say-as> puntiu. <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_bridge_01'/>",
+        "goodbye": "Grazie per aver giocato. Ciao! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/outro.mp3'/>"
+    }
+}
