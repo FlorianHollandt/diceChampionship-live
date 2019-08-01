@@ -198,6 +198,50 @@ const manifest = {
                     },
                 },
             },
+            'fr': {
+                stage: {
+                    staging: {
+                        name: 'Tournoi de Dé',
+                        summary: '👉 Arriverez-vous à lancer les dés mieux que quiconque? 🎲 Venez découvrir à quel point vous êtes chanceux! 🍀',
+                        description: 'Skill de Staging pour le Championnat de Dé (FR)',
+                        examplePhrases: [
+                            'Alexa ouvre Tournoi de Dé',
+                        ],
+                        smallIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_small.png',
+                        largeIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChampionship_stage_large.png',
+                        keywords: [
+                            'test',
+                        ],
+                    },
+                    live: {
+                        name: 'Championnat de Dé',
+                        summary: '👉 Arriverez-vous à lancer les dés mieux que quiconque? 🎲 Venez découvrir à quel point vous êtes chanceux! 🍀',
+                        description: 'Jouez aux dés contre le monde entier! Quel sera votre score maximum?\n\nLes règles sont simples:\n- Pour chaque lancer, votre score correspond à la somme de 10 dés à six faces lancés au hasard\n- Seul votre meilleur score détermine votre place dans le classement\n- Si vous avez le même score qu’un autre joueur, le premier des deux à avoir atteint ce score aura un rang plus élévé dans le classement\n\n...Et maintenant, quel classement allez-vous atteindre?\n\nCette Skill est simple pour le moment mais nous avons de grands projets pour le Championnat de Dé comme l’optimisation pour les appareils avec écrans, un son haute définition, du contenu premium et plus encore... Restez à l’écoute!\n\nAmusez-vous bien et bonne chance!',
+                        examplePhrases: [
+                            'Alexa ouvre Championnat de Dé',
+                        ],
+                        smallIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_small.png',
+                        largeIconUri: 'https://exampleresources.s3-eu-west-1.amazonaws.com/skillIcon_diceChallenge_large.png',
+                        keywords: [
+                            'jeu',
+                            'amusant',
+                            'match',
+                            'challenge',
+                            'statistiques',
+                            'probabilité',
+                            'dé',
+                            'champion',
+                            'championnat',
+                            'score',
+                            'gagnant',
+                            'chance',
+                            'hasard',
+                            'vainqueur',
+                            'compétition',
+                        ],
+                    },
+                },
+            },
         },
     },
 };
@@ -215,6 +259,9 @@ const invocationName = {
         },
         'it': {
             invocation: 'campionato dei dadi',
+        },
+        'fr': {
+            invocation: 'championnat de dé',
         },
     },
 };
@@ -239,6 +286,10 @@ module.exports = {
                 it: [
                     'it-IT',
                 ],
+                fr: [
+                    'fr-FR',
+                    'fr-CA',
+                ],
             },
         },
         manifest: {
@@ -251,6 +302,8 @@ module.exports = {
                     'es-MX': manifest.privacyAndCompliance,
                     'es-US': manifest.privacyAndCompliance,
                     'it-IT': manifest.privacyAndCompliance,
+                    'fr-FR': manifest.privacyAndCompliance,
+                    'fr-CA': manifest.privacyAndCompliance,
                 },
                 allowsPurchases: false,
                 usesPersonalInfo: false,
@@ -267,6 +320,8 @@ module.exports = {
                     'es-MX': manifest.publishingInformation.locales.es.stage.staging,
                     'es-US': manifest.publishingInformation.locales.es.stage.staging,
                     'it-IT': manifest.publishingInformation.locales.it.stage.staging,
+                    'fr-FR': manifest.publishingInformation.locales.fr.stage.staging,
+                    'fr-CA': manifest.publishingInformation.locales.fr.stage.staging,
                 },
                 isAvailableWorldwide: true,
                 testingInstructions: 'Sample testing instructions',
@@ -303,6 +358,7 @@ module.exports = {
                     'de': invocationName.locales.de,
                     'es': invocationName.locales.es,
                     'it': invocationName.locales.it,
+                    'fr': invocationName.locales.fr,
                 },
                 manifest: {
                     publishingInformation: {
@@ -314,6 +370,8 @@ module.exports = {
                             'es-MX': manifest.publishingInformation.locales.es.stage.live,
                             'es-US': manifest.publishingInformation.locales.es.stage.live,
                             'it-IT': manifest.publishingInformation.locales.it.stage.live,
+                            'fr-FR': manifest.publishingInformation.locales.fr.stage.live,
+                            'fr-CA': manifest.publishingInformation.locales.fr.stage.live,
                         },
                     },
                 },
