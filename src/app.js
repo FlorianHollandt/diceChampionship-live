@@ -244,3 +244,4 @@ function getPlayerId(jovo) {
     const sessionId = jovo.$request.session.sessionId;
     return murmurhash.v2(sessionId).toString();
 }
+

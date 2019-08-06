@@ -97,6 +97,17 @@ Here are the differences in detail:<br/>
             Licensed and remixed sounds from <a href="https://audiojungle.net">Audiojungle</a>
         </td>
     </tr>
+    <tr>
+        <th>
+            Brief mode
+        </th>
+        <td>
+            None
+        </td>
+        <td>
+            Reduced amount of response text after 2nd round
+        </td>
+    </tr>
 </table>
 
 Ultimately, this version of Dice Championship will combine the most publication-worthy features of all implementations within this project.
