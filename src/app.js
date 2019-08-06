@@ -80,7 +80,11 @@ app.setHandler({
     async YesIntent() {
         console.log(`YesIntent()`);
 
-        this.$speech.t('confirm');
+        if (
+            this.$user.$data.rounds.session <= config.custom.briefModeLimit
+        ) {
+            this.$speech.t('confirm');
+        }
 
         return this.toIntent('_rollDice');
     },
@@ -91,10 +95,12 @@ app.setHandler({
         this.$user.$data.rounds.total++;
         this.$user.$data.rounds.session++;
 
-
-        this.$speech
-            .t('dice-intro')
-            .t('dice-sound');
+        if (
+            this.$user.$data.rounds.session <= config.custom.briefModeLimit
+        ) {
+            this.$speech.t('dice-intro');
+        }
+        this.$speech.t('dice-sound');
 
         let sumOfDice = 0;
         for (let i = 0; i < config.custom.game.numberOfDice; i++) {
@@ -145,6 +151,10 @@ app.setHandler({
             this.$user.$data.previousHighscore = sumOfDice;
             soundKey = 'result-sound-positive';
             speechKey = 'result-newPersonalHighscore';
+        } else if (
+            this.$user.$data.rounds.session > config.custom.briefModeLimit
+        ) {
+            speechKey = '';
         }
         if (rank < previousRank) {
             this.$user.$data.previousRank = rank;
