@@ -21,14 +21,14 @@
         "result-sound-negative": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/tally-negative.mp3'/>",
         "result-sound-positive": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/tally-positive.mp3'/>",
         "result-score": "Tu puntuación es {{sound}} <say-as interpret-as='cardinal'>{{score}}</say-as> puntos!",
-        "result-lowerScore": "Parece que estas en el puesto <say-as interpret-as='ordinal'>{{rank}}</say-as> por ahora.",
+        "result-lowerScore": "Parece que estás en el puesto <say-as interpret-as='cardinal'>{{rank}}</say-as> por ahora.",
         "result-newPersonalHighscore": "Felicitaciones, tienes un nuevo record personal! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
-        "result-higherRank": "Felicitaciones, este nuevo record personal te otorga el puesto <say-as interpret-as='ordinal'>{{rank}}</say-as> en la tabla de puntuación! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
+        "result-higherRank": "Felicitaciones, este nuevo record personal te otorga el puesto <say-as interpret-as='cardinal'>{{rank}}</say-as> en la tabla de puntuación! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
         "result-numberOneRank": "Felicitaciones, esa es la mejor puntuación hasta ahora! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-major.mp3'/>",
         "prompt-short": "Quieres intentarlo otra vez?",
         "prompt-full": "Quieres tirar el dado?",
         "help-launch": "Campeonato de Dados te deja tirar 10 dados, y comparar tu puntuación con la de jugadores de todo el mundo.<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/>",
-        "help-rank": "Estás en el puesto <say-as interpret-as='ordinal'>{{rank}}</say-as> de la tabla de puntuación, con un record personal de <say-as interpret-as='cardinal'>{{score}}</say-as> puntos. <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/>",
+        "help-rank": "Estás en el puesto <say-as interpret-as='cardinal'>{{rank}}</say-as> de la tabla de puntuación, con un record personal de <say-as interpret-as='cardinal'>{{score}}</say-as> puntos. <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/>",
         "goodbye": "Gracias por jugar. Hasta pronto! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/outro.mp3'/>"
     }
 }
