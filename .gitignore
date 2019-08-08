@@ -2,6 +2,8 @@ node_modules/
 db/
 bundle/
 bundle.zip
-platforms/
+platforms/alexaSkill/.ask
+platforms/alexaSkill/models
+platforms/alexaSkill/skill.json
 test/
 .env

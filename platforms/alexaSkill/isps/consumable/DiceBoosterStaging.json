@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "type": "CONSUMABLE",
+  "referenceName": "DiceBoosterStaging",
+  "publishingInformation": {
+    "locales": {
+      "en-US": {
+        "name": "Dice Booster",
+        "summary": "Boost your rise through the leaderboard with 5 additional dice!",
+        "description": "Tired of throwing the dice so many times to beat your highscore and rise through the ranks of Dice Championship? Dice Booster helps you pushing your luck: For each purchase, you roll with 5 more dice than before - And only the best 10 dice count for your score!\nYou can purchase Dice Booster mutliple times to roll with more and more dice.",
+        "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/5313/5b8970d318c24420877bc16944cc59fc/APP_ICON?versionId=4A6JoyBrKHvUAW.ArsBr89dfeJQwpOn_&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190807T214348Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190807%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=b51abdcb07cf7a215f1b1c27f1346e45cbab119e1af8e4994de23575c66180cd",
+        "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/d920/ab5aa87dd3c748f1b1048a827ead9b1d/APP_ICON_LARGE?versionId=PoWVpX13pSYWG2bF4Wp5gsshDlEW7Lmz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190807T214348Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190807%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=e197b014783ad32edd9c91bbdfd1825d0f608d310160549ae49c3cf69b6b1a9a",
+        "examplePhrases": [
+          "Alexa, get Dice Booster",
+          "Alexa, buy Dice Booster",
+          "Alexa, purchase Dice Booster"
+        ],
+        "keywords": [
+          "dice",
+          "luck",
+          "bonus",
+          "extra",
+          "premium"
+        ],
+        "customProductPrompts": {
+          "purchasePromptDescription": "Dice Booster lets you roll with five additional dice, and picks the ten best dice for your score.",
+          "boughtCardDescription": "Your Dice Booster is immediately applied to your Dice Championship account."
+        }
+      }
+    },
+    "distributionCountries": [
+      "US"
+    ],
+    "pricing": {
+      "amazon.com": {
+        "releaseDate": "2019-08-08T00:00Z",
+        "defaultPriceListing": {
+          "price": 0.99,
+          "currency": "USD"
+        }
+      }
+    },
+    "taxInformation": {
+      "category": "SOFTWARE"
+    }
+  },
+  "privacyAndCompliance": {
+    "locales": {
+      "en-US": {
+        "privacyPolicyUrl": "https://dicechampionship.s3-eu-west-1.amazonaws.com/privacyPolicy/index.html"
+      }
+    }
+  },
+  "testingInstructions": "test",
+  "purchasableState": "PURCHASABLE"
+}

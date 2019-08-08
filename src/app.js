@@ -43,6 +43,14 @@ app.setHandler({
             total: 0,
             session: 0,
         };
+        this.$user.$data.diceBooster = {
+            purchaseCount: 0,
+            lastUpsellDate: null,
+            unhappyStreak: 0,
+            productId: null,
+            purchasable: false,
+        };
+        this.$user.$data.numberOfDice = config.custom.game.numberOfDice;
 
         return;
     },
@@ -50,7 +58,56 @@ app.setHandler({
     async LAUNCH() {
         console.log(`LAUNCH()`);
 
+        this.$user.$data.currentDate = this.getTimestamp().match(
+            /\d{4}-\d{2}-\d{2}/
+        )[0];
+
+        /* Sanitize data for old users */
+        if (!this.$user.$data.diceBooster) {
+            this.$user.$data.diceBooster = {
+                purchaseCount: 0,
+                lastUpsellDate: null,
+                unhappyStreak: 0,
+                productId: null,
+                purchasable: false,
+            };
+        }
+
+        let productData;
+        try {
+            productData = await this.$alexaSkill
+                .$inSkillPurchase
+                .getProductByReferenceName(
+                    config.custom.purchase.diceBooster.productName
+                );
+        } catch (error) {
+            console.log(`Error upon retrieving product info: ${
+                JSON.stringify(error, null, 4)
+            }`);
+            productData = {
+                productId: this.$user.$data.diceBooster.productId,
+                activeEntitlementCount: this.$user.$data.diceBooster.purchaseCount,
+                purchasable: 'NOT_PURCHASABLE',
+            };
+        }
+        this.$user.$data.diceBooster.productId = productData.productId;
+        this.$user.$data.diceBooster.purchaseCount = productData.activeEntitlementCount;
+        this.$user.$data.diceBooster.purchasable = (
+            productData.purchasable === 'PURCHASABLE'
+        );
+        console.log(`Product data: ${JSON.stringify(productData, null, 4)}`);
+
+        const purchaseCount = this.$user.$data.diceBooster.purchaseCount;
+        const dicePerPurchase = config.custom.purchase.diceBooster.extraDiceNumber;
+        const numberOfDice = (
+            config.custom.game.numberOfDice
+            + (purchaseCount * dicePerPurchase)
+        );
+        this.$user.$data.numberOfDice = numberOfDice;
+        console.log(`Number of dice: ${numberOfDice}`);
+
         this.$user.$data.rounds.session = 0;
+        this.$user.$data.diceBooster.unhappyStreak = 0;
 
         if (this.$user.$data.rounds.total === 0) {
             this.$speech.t('welcome-new');
@@ -65,15 +122,63 @@ app.setHandler({
             this.$user.$data.previousRank = rank;
             console.log(`Rank: ${rank}`);
 
+            const responseKey = `welcome-returning${
+                purchaseCount > 0 ? '-diceBooster' : ''
+            }`;
+
             this.$speech.t(
-                'welcome-returning',
+                responseKey,
                 {
                     score: highscore,
                     rank: rank,
+                    diceCount: numberOfDice,
                 }
             );
         }
 
+        return this.toIntent('_rollDice');
+    },
+
+    ON_PURCHASE() {
+        console.log(`ON_PURCHASE()`);
+
+        const transactionType = this.$request.name;
+        const transactionResult = this.$alexaSkill.$inSkillPurchase.getPurchaseResult();
+        if (
+            (
+                transactionType === 'Buy'
+                || transactionType === 'Upsell'
+            )
+            && transactionResult === 'ACCEPTED'
+        ) {
+            this.$user.$data.diceBooster.purchaseCount += 1;
+            const purchaseCount = this.$user.$data.diceBooster.purchaseCount;
+            const dicePerPurchase = config.custom.purchase.diceBooster.extraDiceNumber;
+            const numberOfDice = (
+                config.custom.game.numberOfDice
+                + (purchaseCount * dicePerPurchase)
+            );
+            this.$user.$data.numberOfDice = numberOfDice;
+
+            this.$speech.t(
+                'diceBooster-upsell-accept',
+                {
+                    diceCount: numberOfDice,
+                }
+            );
+        } else if (
+            transactionResult === 'ERROR'
+            || transactionType === 'Cancel'
+        ) {
+            return this.ask(
+                this.$speech.t('prompt-resume'),
+                this.$reprompt.t('prompt-full')
+            );
+        } else {
+            this.$speech.t('diceBooster-upsell-decline');
+        }
+
+        this.$speech.t('dice-intro');
         return this.toIntent('_rollDice');
     },
 
@@ -102,10 +207,9 @@ app.setHandler({
         }
         this.$speech.t('dice-sound');
 
-        let sumOfDice = 0;
-        for (let i = 0; i < config.custom.game.numberOfDice; i++) {
-            sumOfDice += getDiceRollResult();
-        }
+        const numberOfDice = this.$user.$data.numberOfDice;
+        const allDice = rollAllDice(numberOfDice);
+        const sumOfDice = getSumOfBestDice(allDice);
         this.$data.sumOfDice = sumOfDice;
 
         return this.toIntent('_compareResult');
@@ -116,6 +220,9 @@ app.setHandler({
 
         const playerId = this.$user.$data.playerId;
         const totalRounds = this.$user.$data.rounds.total;
+
+        let unhappyStreak = this.$user.$data.diceBooster.unhappyStreak;
+        const purchaseCount = this.$user.$data.diceBooster.purchaseCount;
 
         const sumOfDice = this.$data.sumOfDice;
         console.log(`Sum of dice: ${sumOfDice}`);
@@ -134,6 +241,11 @@ app.setHandler({
         console.timeEnd('database.getRank() ');
         console.log(`Rank: ${rank}`);
 
+        let userStatus = 'default';
+        if (purchaseCount) {
+            userStatus = `diceBooster-${purchaseCount}`;
+        }
+
         if (sumOfDice > previousHighscore) {
             console.time('database.submitScore() ');
             await database.submitScore(
@@ -142,19 +254,23 @@ app.setHandler({
                 totalRounds,
                 this.getPlatformType(),
                 this.getLocale(),
-                this.getTimestamp().match(
-                    /\d{4}-\d{2}-\d{2}/
-                )[0]
+                this.$user.$data.currentDate,
+                userStatus
             );
             console.timeEnd('database.submitScore() ');
 
             this.$user.$data.previousHighscore = sumOfDice;
             soundKey = 'result-sound-positive';
             speechKey = 'result-newPersonalHighscore';
-        } else if (
-            this.$user.$data.rounds.session > config.custom.briefModeLimit
-        ) {
-            speechKey = '';
+            unhappyStreak = 0;
+        } else {
+            unhappyStreak += 1;
+
+            if (
+                this.$user.$data.rounds.session > config.custom.briefModeLimit
+            ) {
+                speechKey = '';
+            }
         }
         if (rank < previousRank) {
             this.$user.$data.previousRank = rank;
@@ -183,7 +299,40 @@ app.setHandler({
                 }
             );
 
-        return this.toIntent('_prompt');
+        console.log(`Unhappy streak: ${unhappyStreak}`);
+        if (
+            unhappyStreak >= config.custom.purchase.diceBooster.unhappyStreakLimit
+            && rank > 1
+            && this.$user.$data.diceBooster.purchasable
+            && this.$user.$data.diceBooster.lastUpsellDate !== this.$user.$data.currentDate
+        ) {
+            this.$user.$data.diceBooster.unhappyStreak = 0;
+            this.$user.$data.diceBooster.lastUpsellDate = this.$user.$data.currentDate;
+
+            /*
+            The upsellMessage propoerty of the Upsell directive doesn't allow SSML,
+            which we require for the dice sounds etc. The workaround is to send the
+            response text without the prompt via progressive response, which allows SSML. :)
+            */
+            let responseText = this.$speech.toString();
+            console.log(`Response text (for progressive response): ${responseText}`);
+            this.$alexaSkill.progressiveResponse(responseText);
+            await sleep(1500);
+
+            const orderFlag = this.$user.$data.diceBooster.purchaseCount ? 'next' : 'first';
+            const upsellPrompt = this.speechBuilder().t(
+                `diceBooster-upsell-${orderFlag}-prompt`
+            ).toString();
+            const upsellToken = this.$request.request.requestId;
+            this.$alexaSkill.$inSkillPurchase.upsell(
+                this.$user.$data.diceBooster.productId,
+                upsellPrompt,
+                upsellToken
+            );
+        } else {
+            this.$user.$data.diceBooster.unhappyStreak = unhappyStreak;
+            return this.toIntent('_prompt');
+        }
     },
 
     async _prompt() {
@@ -222,6 +371,102 @@ app.setHandler({
         );
     },
 
+    async PurchaseDiceBoosterIntent() {
+        console.log(`PurchaseDiceBoosterIntent()`);
+
+        this.$user.$data.diceBooster.lastUpsellDate = this.$user.$data.currentDate;
+
+        if (this.$user.$data.diceBooster.purchasable) {
+            const upsellToken = this.$request.request.requestId;
+            this.$alexaSkill.$inSkillPurchase.buy(
+                this.$user.$data.diceBooster.productId,
+                upsellToken
+            );
+        } else {
+            this.$speech.t('diceBooster-notPurchasable');
+            this.ask(
+                this.$speech
+            );
+        }
+    },
+
+    async WhatCanIBuyIntent() {
+        console.log(`WhatCanIBuyIntent()`);
+
+        this.toStatelessIntent('PurchaseDiceBoosterIntent');
+    },
+
+    async WhatHaveIBoughtIntent() {
+        console.log(`WhatHaveIBoughtIntent()`);
+
+        this.$user.$data.diceBooster.lastUpsellDate = this.$user.$data.currentDate;
+
+        const productData = await this.$alexaSkill
+            .$inSkillPurchase
+            .getProductByReferenceName(
+                config.custom.purchase.diceBooster.productName
+            );
+        const purchaseCount = productData.activeEntitlementCount;
+
+        let responseKey;
+        if (productData.purchasable !== 'PURCHASABLE') {
+            this.$speech.t('diceBooster-notPurchasable');
+            return this.ask(
+                this.$speech
+            );
+        } else if (
+            !purchaseCount
+        ) {
+            responseKey = 'diceBooster-whatHaveIBought-none';
+        } else if (
+            purchaseCount === 1
+        ) {
+            responseKey = 'diceBooster-whatHaveIBought-single';
+        } else {
+            responseKey = 'diceBooster-whatHaveIBought-multiple';
+        }
+
+        const upsellPrompt = this.speechBuilder().t(
+            responseKey,
+            {
+                count: purchaseCount,
+            }
+        ).toString();
+        const upsellToken = this.$request.request.requestId;
+        this.$alexaSkill.$inSkillPurchase.upsell(
+            this.$user.$data.diceBooster.productId,
+            upsellPrompt,
+            upsellToken
+        );
+    },
+
+    async GetRefundIntent() {
+        console.log(`GetRefundIntent()`);
+
+        this.$user.$data.diceBooster.lastUpsellDate = this.$user.$data.currentDate;
+
+        const productData = await this.$alexaSkill
+            .$inSkillPurchase
+            .getProductByReferenceName(
+                config.custom.purchase.diceBooster.productName
+            );
+        const purchaseCount = productData.activeEntitlementCount;
+
+        if (!purchaseCount) {
+            this.$speech.t('diceBooster-refund-notPurchased');
+            return this.ask(
+                this.$speech.t('prompt-resume'),
+                this.$reprompt.t('prompt-full')
+            );
+        } else {
+            const refundToken = this.$request.request.requestId;
+            this.$alexaSkill.$inSkillPurchase.cancel(
+                productData.productId,
+                refundToken
+            );
+        }
+    },
+
     async END() {
         console.log(`END()`);
         this.$speech.t('goodbye');
@@ -234,10 +479,39 @@ app.setHandler({
 
 module.exports.app = app;
 
-function getDiceRollResult() {
+function rollSingleDice() {
     return Math.ceil(
         Math.random() * config.custom.game.sidesPerDice
     );
+}
+
+function rollAllDice(numberOfDice) {
+    let allDice = [];
+    for (let i = 0; i < numberOfDice; i++) {
+        allDice.push(
+            rollSingleDice()
+        );
+    }
+    return allDice;
+}
+
+function getSumOfBestDice(allDice) {
+    allDice.sort(
+        (a, b) => {
+            return b-a;
+        }
+    );
+    let bestDice = allDice.splice(
+        0,
+        config.custom.game.numberOfDice
+    );
+    const sumOfDice = bestDice.reduce(
+        (a, b) => {
+            return a + b;
+        },
+        0
+    );
+    return sumOfDice;
 }
 
 function getPlayerId(jovo) {
@@ -245,3 +519,10 @@ function getPlayerId(jovo) {
     return murmurhash.v2(sessionId).toString();
 }
 
+function sleep(ms) {
+    return new Promise(
+        (resolve) => {
+            setTimeout(resolve, ms);
+        }
+    );
+}

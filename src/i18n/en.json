@@ -2,6 +2,7 @@
     "translation": {
         "welcome-new": "Welcome to dice championship! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/> Let's see how high you can score by rolling ten dice.",
         "welcome-returning": "Welcome back to dice championship! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/> Your current highscore is <say-as interpret-as='cardinal'>{{score}}</say-as>, earning you rank <say-as interpret-as='cardinal'>{{rank}}</say-as> of the leaderboard. Get ready for action!",
+        "welcome-returning-diceBooster": "Welcome back to dice championship! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/intro.mp3'/> Your current highscore is <say-as interpret-as='cardinal'>{{score}}</say-as>, earning you rank <say-as interpret-as='cardinal'>{{rank}}</say-as> of the leaderboard. You have Dice Booster enabled, so your score is the best ten out of {{diceCount}} dice. <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/confirmPurchase.mp3'/> Get ready for action!",
         "confirm": [
             "Awesome!",
             "Great!",
@@ -26,9 +27,19 @@
         "result-higherRank": "Congrats, this new personal highscore earns you the <say-as interpret-as='ordinal'>{{rank}}</say-as> place in the leaderboard! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-minor.mp3'/>",
         "result-numberOneRank": "Congrats, that's the best score so far! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/win-major.mp3'/>",
         "prompt-short": "Do you want to try again?",
+        "prompt-resume": "Do you want to continue your journey to the top of the leaderboard?",
         "prompt-full": "Do you want to throw the dice now?",
         "help-launch": "Dice Championship lets you roll 10 dice, and compare your score with players from around the world.<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/>",
         "help-rank": "You are currently the <say-as interpret-as='ordinal'>{{rank}}</say-as> place in the leaderboard, with a personal highscore of <say-as interpret-as='cardinal'>{{score}}</say-as> points. <audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_bridge_01'/>",
+        "diceBooster-upsell-first-prompt": "Wow, you're really dedicated about climbing that leaderboard! With Dice Booster, you can push your luck by throwing five more dice, and only the best 10 count towards your score. Are you interested?",
+        "diceBooster-upsell-next-prompt": "Your enthusiasm is absolutely inspiring! Would you like to boost your luck with the dice a bit more?",
+        "diceBooster-upsell-decline": "If you change your mind, you can say Alexa, get Dice Booster. Let's continue!",
+        "diceBooster-upsell-accept": "<audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/confirmPurchase.mp3'/> Fantastic! You now throw {{diceCount}} dice, and only the best 10 among them count as your score.",
+        "diceBooster-whatHaveIBought-none": "You have no Dice Boosters at this point. Are you interested to get your first one?",
+        "diceBooster-whatHaveIBought-single": "You have purchased your first Dice Booster. Are you interested to get another one?",
+        "diceBooster-whatHaveIBought-multiple": "You have purchased {{count}} Dice Boosters. Are you interested to get another one?",
+        "diceBooster-notPurchasable": "At this point there is nothing for you to buy in this Alexa Skill. Do you want to continue playing?",
+        "diceBooster-refund-notPurchased": "It seems like you have not purchased a Dice Booster, so you can't get a refund. If you received this message in error, please contact Amazon customer support.",
         "goodbye": "Thanks for playing. Bye! <audio src='https://dicechampionship.s3-eu-west-1.amazonaws.com/sounds/outro.mp3'/>"
     }
 }

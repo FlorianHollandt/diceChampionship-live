@@ -4,10 +4,16 @@
 
 require('dotenv').config();
 
-const manifest = {
+let manifest = {
     privacyAndCompliance: {
-        privacyPolicyUrl: '',
-        termsOfUseUrl: '',
+        'default': {
+            privacyPolicyUrl: '',
+            termsOfUseUrl: '',
+        },
+        'en-US': {
+            privacyPolicyUrl: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/privacyPolicy/index.html',
+            termsOfUseUrl: '',
+        },
     },
     publishingInformation: {
         locales: {
@@ -246,6 +252,13 @@ const manifest = {
     },
 };
 
+manifest.publishingInformation.locales['en-US'] = JSON.parse(
+    JSON.stringify(
+        manifest.publishingInformation.locales.en
+    )
+);
+manifest.publishingInformation.locales['en-US'].stage.description = 'Dice Championship lets you play dice against the whole world! How high can you make it up the highscore?\n\nThe rules are simple:\n- For each throw, your score is the sum of randomly thrown 10 six-sided dice\n- Only your best score ever determines your place in the highscore\n- If you and another player have the same score, the one of you who achived it first gets the higher rank\n\n...now how high can YOU score? \n\nUPDATE: Dice Championship now features Dice Booster!\nIf you want to speed up your rise to the top, you\'re gonna love Dice Booster: It gives you five extra dice to roll with, while only the 10 best dice count for your score. And the best thing about Dice Booster? You can get several of them, if only the sky is the limit to your ambitions! 🚀\n\nHave fun, and good luck!';
+
 const invocationName = {
     locales: {
         'en': {
@@ -271,10 +284,6 @@ module.exports = {
         nlu: {
             name: 'alexa',
             lang: {
-                en: [
-                    'en-US',
-                    'en-CA',
-                ],
                 de: [
                     'de-DE',
                 ],
@@ -295,17 +304,17 @@ module.exports = {
         manifest: {
             privacyAndCompliance: {
                 locales: {
-                    'en-US': manifest.privacyAndCompliance,
-                    'en-CA': manifest.privacyAndCompliance,
-                    'de-DE': manifest.privacyAndCompliance,
-                    'es-ES': manifest.privacyAndCompliance,
-                    'es-MX': manifest.privacyAndCompliance,
-                    'es-US': manifest.privacyAndCompliance,
-                    'it-IT': manifest.privacyAndCompliance,
-                    'fr-FR': manifest.privacyAndCompliance,
-                    'fr-CA': manifest.privacyAndCompliance,
+                    'en-US': manifest.privacyAndCompliance['en-US'],
+                    'en-CA': manifest.privacyAndCompliance['default'],
+                    'de-DE': manifest.privacyAndCompliance['default'],
+                    'es-ES': manifest.privacyAndCompliance['default'],
+                    'es-MX': manifest.privacyAndCompliance['default'],
+                    'es-US': manifest.privacyAndCompliance['default'],
+                    'it-IT': manifest.privacyAndCompliance['default'],
+                    'fr-FR': manifest.privacyAndCompliance['default'],
+                    'fr-CA': manifest.privacyAndCompliance['default'],
                 },
-                allowsPurchases: false,
+                allowsPurchases: true,
                 usesPersonalInfo: false,
                 isChildDirected: false,
                 isExportCompliant: true,
@@ -354,7 +363,8 @@ module.exports = {
             alexaSkill: {
                 skillId: process.env.SKILL_ID_LIVE,
                 languageModel: {
-                    'en': invocationName.locales.en,
+                    'en-US': invocationName.locales.en,
+                    'en-CA': invocationName.locales.en,
                     'de': invocationName.locales.de,
                     'es': invocationName.locales.es,
                     'it': invocationName.locales.it,
@@ -363,7 +373,7 @@ module.exports = {
                 manifest: {
                     publishingInformation: {
                         locales: {
-                            'en-US': manifest.publishingInformation.locales.en.stage.live,
+                            'en-US': manifest.publishingInformation.locales['en-US'].stage.live,
                             'en-CA': manifest.publishingInformation.locales.en.stage.live,
                             'de-DE': manifest.publishingInformation.locales.de.stage.live,
                             'es-ES': manifest.publishingInformation.locales.es.stage.live,

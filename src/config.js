@@ -45,6 +45,13 @@ module.exports = {
             sidesPerDice: 6,
         },
         briefModeLimit: 2,
+        purchase: {
+            diceBooster: {
+                productName: process.env.PRODUCT_DICEBOOSTER_NAME,
+                unhappyStreakLimit: 10,
+                extraDiceNumber: 5,
+            },
+        },
         version: process.env.VERSION,
     },
 };

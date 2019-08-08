@@ -1,0 +1,104 @@
+{
+	"invocation": "dice tournament",
+	"intents": [
+		{
+			"name": "YesIntent",
+			"alexa": {
+				"name": "AMAZON.YesIntent"
+			},
+			"phrases": [
+				"yes",
+				"sure",
+				"absolutely"
+			]
+		},
+		{
+			"name": "NoIntent",
+			"alexa": {
+				"name": "AMAZON.NoIntent"
+			},
+			"phrases": [
+				"no",
+				"not now",
+				"no way"
+			]
+        },
+        {
+            "name": "PurchaseDiceBoosterIntent",
+            "phrases": [
+                "get dice booster",
+                "buy dice booster",
+                "purchase dice booster"
+            ]
+        },
+        {
+            "name": "WhatHaveIBoughtIntent",
+            "phrases": [
+                "what have i bought",
+                "what did i buy",
+                "what did i purchase",
+                "what have i purchased",
+                "where is my money"
+            ]
+        },
+        {
+            "name": "WhatCanIBuyIntent",
+            "phrases": [
+                "what can i buy",
+                "what can i purchase",
+                "what's for sale",
+                "can i buy something",
+                "is there something to buy"
+            ]
+        },
+        {
+            "name": "GetRefundIntent",
+            "phrases": [
+                "i want a refund",
+                "i want my money back",
+                "undo the purchase",
+                "get me a refund"
+            ]
+        }
+	],
+	"alexa": {
+		"interactionModel": {
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					}
+				]
+			}
+		}
+	},
+	"dialogflow": {
+		"intents": [
+			{
+				"name": "Default Fallback Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"fallbackIntent": true
+			},
+			{
+				"name": "Default Welcome Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"events": [
+					{
+						"name": "WELCOME"
+					}
+				]
+			}
+		]
+	}
+}
