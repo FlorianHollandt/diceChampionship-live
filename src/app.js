@@ -84,12 +84,15 @@ app.setHandler({
             console.log(`Error upon retrieving product info: ${
                 JSON.stringify(error, null, 4)
             }`);
+        }
+        if (!productData) {
             productData = {
                 productId: this.$user.$data.diceBooster.productId,
                 activeEntitlementCount: this.$user.$data.diceBooster.purchaseCount,
                 purchasable: 'NOT_PURCHASABLE',
             };
         }
+        console.log(`Product data: ${JSON.stringify(productData, null, 4)}`);
         this.$user.$data.diceBooster.productId = productData.productId;
         this.$user.$data.diceBooster.purchaseCount = productData.activeEntitlementCount;
         this.$user.$data.diceBooster.purchasable = (
