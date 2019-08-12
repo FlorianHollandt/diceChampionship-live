@@ -108,6 +108,17 @@ Here are the differences in detail:<br/>
             Reduced amount of response text after 2nd round
         </td>
     </tr>
+    <tr>
+        <th>
+            Visuals
+        </th>
+        <td>
+            None
+        </td>
+        <td>
+            APL support for English locales
+        </td>
+    </tr>
 </table>
 
 Ultimately, this version of Dice Championship will combine the most publication-worthy features of all implementations within this project.
@@ -223,6 +234,14 @@ This version uses different, and thus less generic sound effects than the base v
 All audio files marked with <code>*</code> were produced by <a href="https://audiojungle.net/user/gamechestaudio">the same Audiojungle user</a>, to ensure a consistent audio experience across the Skill. The tally and dice sounds were mixed using GarageBand.
 
 I have purchase a single-use license for the Audiojungle sounds mentioned here, so if you plan to use these sounds in your own voice apps, you will need to purchase your own license.
+
+## Visuals
+
+Dice Championship uses APL to enrich the conversation with visual feedback. In order to provide value through this additional output channel, it displays the individual dice faces of each round - They are too long to enumerate in the dialog, but can be nicely represented visually. To convey the experience of throwing a handfull of dice, their individual positions and rotations are randomly generated (while avoiding collisions).
+
+Here's an example of how the visuals look like, in this case on the Echo Show 5:
+
+<img src="https://dicechampionship.s3-eu-west-1.amazonaws.com/screenshots/apl_smallRectangle_example.png" width="60%">
 
 # Setting up the Live Alexa Skill version
 
