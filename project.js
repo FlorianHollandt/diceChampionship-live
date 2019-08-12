@@ -320,6 +320,57 @@ module.exports = {
                 isExportCompliant: true,
                 containsAds: false,
             },
+            apis: {
+                custom: {
+                    interfaces: [
+                        {
+                            type: 'ALEXA_PRESENTATION_APL',
+                            supportedViewports: [
+                                {
+                                    mode: 'HUB',
+                                    shape: 'ROUND',
+                                    minWidth: 480,
+                                    maxWidth: 480,
+                                    minHeight: 480,
+                                    maxHeight: 480,
+                                },
+                                {
+                                    mode: 'HUB',
+                                    shape: 'RECTANGLE',
+                                    minWidth: 960,
+                                    maxWidth: 960,
+                                    minHeight: 480,
+                                    maxHeight: 480,
+                                },
+                                {
+                                    mode: 'HUB',
+                                    shape: 'RECTANGLE',
+                                    minWidth: 1024,
+                                    maxWidth: 1024,
+                                    minHeight: 600,
+                                    maxHeight: 600,
+                                },
+                                {
+                                    mode: 'HUB',
+                                    shape: 'RECTANGLE',
+                                    minWidth: 1280,
+                                    maxWidth: 1280,
+                                    minHeight: 800,
+                                    maxHeight: 800,
+                                },
+                                {
+                                    mode: 'TV',
+                                    shape: 'RECTANGLE',
+                                    minWidth: 960,
+                                    maxWidth: 960,
+                                    minHeight: 540,
+                                    maxHeight: 540,
+                                },
+                            ],
+                        },
+                    ],
+                },
+            },
             publishingInformation: {
                 locales: {
                     'en-US': manifest.publishingInformation.locales['en-US'].stage.staging,

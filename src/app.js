@@ -3,6 +3,7 @@
 const murmurhash = require('murmurhash');
 
 const database = require('./database');
+const display = require('./display');
 const config = require('./config');
 
 // ------------------------------------------------------------------
@@ -210,10 +211,29 @@ app.setHandler({
         }
         this.$speech.t('dice-sound');
 
+        delete this.aplTemplate;
+        let aplTemplate = null;
+        aplTemplate = display.initiateTemplate();
+        console.log(`APL dice data sources initated: ${
+            JSON.stringify(aplTemplate.datasources.payload.dice, null, 4)
+        }`);
+
         const numberOfDice = this.$user.$data.numberOfDice;
         const allDice = rollAllDice(numberOfDice);
+        const coordinates = display.getDiceCoordinates(allDice);
+        aplTemplate = display.placeDice(aplTemplate, allDice, coordinates);
+
+        console.log(`APL dice data sources with coordinates: ${
+            JSON.stringify(aplTemplate.datasources.payload.dice, null, 4)
+        }`);
+
         const sumOfDice = getSumOfBestDice(allDice);
+        aplTemplate = display.addSumOfDice(aplTemplate, sumOfDice);
+
+        aplTemplate.token = this.$request.request.requestId;
+
         this.$data.sumOfDice = sumOfDice;
+        this.$data.aplTemplate = aplTemplate;
 
         return this.toIntent('_compareResult');
     },
@@ -226,6 +246,8 @@ app.setHandler({
 
         let unhappyStreak = this.$user.$data.diceBooster.unhappyStreak;
         const purchaseCount = this.$user.$data.diceBooster.purchaseCount;
+
+        let aplTemplate = this.$data.aplTemplate;
 
         const sumOfDice = this.$data.sumOfDice;
         console.log(`Sum of dice: ${sumOfDice}`);
@@ -243,6 +265,9 @@ app.setHandler({
         const rank = await database.getRank(playerId, currentHighscore);
         console.timeEnd('database.getRank() ');
         console.log(`Rank: ${rank}`);
+
+        aplTemplate = display.addRank(aplTemplate, rank);
+        this.$data.aplTemplate = aplTemplate;
 
         let userStatus = 'default';
         if (purchaseCount) {
@@ -340,6 +365,14 @@ app.setHandler({
 
     async _prompt() {
         console.log(`_prompt()`);
+
+        if (
+            this.getLocale.match('en-')
+        ) {
+            this.addAplDirective(
+                this.$data.aplTemplate
+            );
+        }
 
         return this.ask(
             this.$speech.t('prompt-short'),
