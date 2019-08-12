@@ -367,7 +367,7 @@ app.setHandler({
         console.log(`_prompt()`);
 
         if (
-            this.getLocale.match('en-')
+            this.getLocale().match('en-')
         ) {
             this.addAplDirective(
                 this.$data.aplTemplate
