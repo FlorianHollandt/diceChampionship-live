@@ -116,7 +116,7 @@ Here are the differences in detail:<br/>
             None
         </td>
         <td>
-            APL support for English locales
+            APL support
         </td>
     </tr>
 </table>

@@ -11,18 +11,7 @@ module.exports = {
                 version: '1.0.0',
             },
         ],
-        resources: [
-            {
-                description: 'Background images',
-                strings: {
-                    bgHubRoundSmall: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_roundSmall.png',
-                    bgHubLandscapeSmall: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeSmall.png',
-                    bgHubLandscapeMedium: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeMedium.png',
-                    bgHubLandscapeLarge: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeLarge.png',
-                    bgTvLandscapeXLarge: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeXLarge.png',
-                },
-            },
-        ],
+        resources: [],
         styles: {
             baseText: {
                 values: [
@@ -41,27 +30,27 @@ module.exports = {
                     {
                         when: '${@viewportProfile == @hubRoundSmall}',
                         type: 'BackgroundImageTemplate',
-                        source: '@bgHubRoundSmall',
+                        source: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_roundSmall_${datasource.payload.language}.png',
                     },
                     {
                         when: '${@viewportProfile == @hubLandscapeSmall}',
                         type: 'BackgroundImageTemplate',
-                        source: '@bgHubLandscapeSmall',
+                        source: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeSmall_${datasource.payload.language}.png',
                     },
                     {
                         when: '${@viewportProfile == @hubLandscapeMedium}',
                         type: 'BackgroundImageTemplate',
-                        source: '@bgHubLandscapeMedium',
+                        source: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeMedium_${datasource.payload.language}.png',
                     },
                     {
                         when: '${@viewportProfile == @hubLandscapeLarge}',
                         type: 'BackgroundImageTemplate',
-                        source: '@bgHubLandscapeLarge',
+                        source: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeLarge_${datasource.payload.language}.png',
                     },
                     {
                         when: '${@viewportProfile == @tvLandscapeXLarge}',
                         type: 'BackgroundImageTemplate',
-                        source: '@bgTvLandscapeXLarge',
+                        source: 'https://dicechampionship.s3-eu-west-1.amazonaws.com/visuals/background_landscapeXLarge_${datasource.payload.language}.png',
                     },
                 ],
             },
@@ -445,6 +434,7 @@ module.exports = {
     datasources: {
         payload: {
             borderWidth: 0,
+            language: 'en',
             dice: {
                 size: {
                     roundSmall: 28,

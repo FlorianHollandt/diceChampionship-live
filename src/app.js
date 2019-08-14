@@ -230,6 +230,10 @@ app.setHandler({
         const sumOfDice = getSumOfBestDice(allDice);
         aplTemplate = display.addSumOfDice(aplTemplate, sumOfDice);
 
+        aplTemplate = display.addLanguage(
+            aplTemplate,
+            this.getLocale()
+        );
         aplTemplate.token = this.$request.request.requestId;
 
         this.$data.sumOfDice = sumOfDice;
@@ -366,13 +370,9 @@ app.setHandler({
     async _prompt() {
         console.log(`_prompt()`);
 
-        if (
-            this.getLocale().match('en-')
-        ) {
-            this.addAplDirective(
-                this.$data.aplTemplate
-            );
-        }
+        this.addAplDirective(
+            this.$data.aplTemplate
+        );
 
         return this.ask(
             this.$speech.t('prompt-short'),

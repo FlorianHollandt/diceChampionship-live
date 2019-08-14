@@ -79,6 +79,12 @@ module.exports = {
         return template;
     },
 
+    addLanguage: function(template, locale) {
+        const language = locale.match(/([a-z]+)-[A-Z]+/)[1];
+        template.datasources.payload.language = language;
+        return template;
+    },
+
     addSumOfDice: function(template, sumOfDice) {
         template.datasources.payload.sumOfDice.value = sumOfDice;
         return template;
