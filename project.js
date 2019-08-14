@@ -17,7 +17,7 @@ let manifest = {
     },
     publishingInformation: {
         locales: {
-            'en-CA': {
+            'en-XX': {
                 stage: {
                     staging: {
                         name: 'Dice Tournament',
@@ -254,7 +254,7 @@ let manifest = {
 
 manifest.publishingInformation.locales['en-US'] = JSON.parse(
     JSON.stringify(
-        manifest.publishingInformation.locales['en-CA']
+        manifest.publishingInformation.locales['en-XX']
     )
 );
 manifest.publishingInformation.locales['en-US'].stage.live.description = 'Dice Championship lets you play dice against the whole world! How high can you make it up the highscore?\n\nThe rules are simple:\n- For each throw, your score is the sum of randomly thrown 10 six-sided dice\n- Only your best score ever determines your place in the highscore\n- If you and another player have the same score, the one of you who achived it first gets the higher rank\n\n...now how high can YOU score? \n\nUPDATE: Dice Championship now features Dice Booster!\nIf you want to speed up your rise to the top, you\'re gonna love Dice Booster: It gives you five extra dice to roll with, while only the 10 best dice count for your score. And the best thing about Dice Booster? You can get several of them, if only the sky is the limit to your ambitions! 🚀\n\nHave fun, and good luck!';
@@ -374,7 +374,8 @@ module.exports = {
             publishingInformation: {
                 locales: {
                     'en-US': manifest.publishingInformation.locales['en-US'].stage.staging,
-                    'en-CA': manifest.publishingInformation.locales['en-CA'].stage.staging,
+                    'en-CA': manifest.publishingInformation.locales['en-XX'].stage.staging,
+                    'en-GB': manifest.publishingInformation.locales['en-XX'].stage.staging,
                     'de-DE': manifest.publishingInformation.locales['de'].stage.staging,
                     'es-ES': manifest.publishingInformation.locales['es'].stage.staging,
                     'es-MX': manifest.publishingInformation.locales['es'].stage.staging,
@@ -416,6 +417,7 @@ module.exports = {
                 languageModel: {
                     'en-US': invocationName.locales.en,
                     'en-CA': invocationName.locales.en,
+                    'en-GB': invocationName.locales.en,
                     'de': invocationName.locales.de,
                     'es': invocationName.locales.es,
                     'it': invocationName.locales.it,
@@ -424,8 +426,9 @@ module.exports = {
                 manifest: {
                     publishingInformation: {
                         locales: {
-                            'en-CA': manifest.publishingInformation.locales['en-CA'].stage.live,
                             'en-US': manifest.publishingInformation.locales['en-US'].stage.live,
+                            'en-CA': manifest.publishingInformation.locales['en-XX'].stage.live,
+                            'en-GB': manifest.publishingInformation.locales['en-XX'].stage.live,
                             'de-DE': manifest.publishingInformation.locales['de'].stage.live,
                             'es-ES': manifest.publishingInformation.locales['es'].stage.live,
                             'es-MX': manifest.publishingInformation.locales['es'].stage.live,
