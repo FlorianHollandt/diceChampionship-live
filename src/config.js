@@ -44,6 +44,10 @@ module.exports = {
             numberOfDice: 10,
             sidesPerDice: 6,
         },
+        modeLimit: {
+            brief: 2,
+            binge: 7,
+        },
         briefModeLimit: 2,
         purchase: {
             diceBooster: {

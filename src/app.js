@@ -190,7 +190,7 @@ app.setHandler({
         console.log(`YesIntent()`);
 
         if (
-            this.$user.$data.rounds.session <= config.custom.briefModeLimit
+            this.$user.$data.rounds.session <= config.custom.modeLimit.brief
         ) {
             this.$speech.t('confirm');
         }
@@ -205,7 +205,7 @@ app.setHandler({
         this.$user.$data.rounds.session++;
 
         if (
-            this.$user.$data.rounds.session <= config.custom.briefModeLimit
+            this.$user.$data.rounds.session <= config.custom.modeLimit.brief
         ) {
             this.$speech.t('dice-intro');
         }
@@ -262,7 +262,19 @@ app.setHandler({
         console.log(`Previous rank: ${previousRank}`);
 
         let soundKey = 'result-sound-negative';
-        let speechKey = 'result-lowerScore';
+        let scoreKey = 'result-score';
+        let resultKey = 'result-lowerScore';
+        if (
+            this.$user.$data.rounds.session > config.custom.modeLimit.binge
+        ) {
+            soundKey = 'result-sound-negative-short';
+            scoreKey = 'result-score-short';
+            resultKey = '';
+        } else if (
+            this.$user.$data.rounds.session > config.custom.modeLimit.brief
+        ) {
+            resultKey = '';
+        }
 
         const currentHighscore = Math.max(sumOfDice, previousHighscore);
         console.time('database.getRank() ');
@@ -293,39 +305,33 @@ app.setHandler({
 
             this.$user.$data.previousHighscore = sumOfDice;
             soundKey = 'result-sound-positive';
-            speechKey = 'result-newPersonalHighscore';
+            resultKey = 'result-newPersonalHighscore';
             unhappyStreak = 0;
         } else {
             unhappyStreak += 1;
-
-            if (
-                this.$user.$data.rounds.session > config.custom.briefModeLimit
-            ) {
-                speechKey = '';
-            }
         }
         if (rank < previousRank) {
             this.$user.$data.previousRank = rank;
             soundKey = 'result-sound-positive';
-            speechKey = 'result-higherRank';
+            resultKey = 'result-higherRank';
         }
         if (
             rank === 1
             && previousRank !== 1
         ) {
-            speechKey = 'result-numberOneRank';
+            resultKey = 'result-numberOneRank';
         }
 
         this.$speech
             .t(
-                'result-score',
+                scoreKey,
                 {
                     sound: this.speechBuilder().t(soundKey).toString(),
                     score: sumOfDice,
                 }
             )
             .t(
-                speechKey,
+                resultKey,
                 {
                     rank: rank,
                 }
@@ -374,9 +380,18 @@ app.setHandler({
             this.$data.aplTemplate
         );
 
+        if (
+            this.$user.$data.rounds.session <= config.custom.modeLimit.binge
+        ) {
+            this.$speech.t('prompt-default');
+        } else {
+            this.$speech.t('prompt-short');
+        }
+        this.$reprompt.t('prompt-full');
+
         return this.ask(
-            this.$speech.t('prompt-short'),
-            this.$reprompt.t('prompt-full')
+            this.$speech,
+            this.$reprompt
         );
     },
 
