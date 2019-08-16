@@ -65,7 +65,7 @@ module.exports = {
         );
     },
 
-    getRefund: async function() {
+    getRefund: async function(jovo) {
         console.log(`dialog.game.getRefund()`);
 
         jovo.$user.$data.diceBooster.lastUpsellDate = jovo.$user.$data.currentDate;
