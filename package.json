@@ -4,7 +4,7 @@
   "description": "A sample voice app using MySQL tables for highscores",
   "main": "src/index.js",
   "dependencies": {
-    "aws-sdk": "^2.488.0",
+    "aws-sdk": "^2.814.0",
     "dotenv": "^8.0.0",
     "gulp-cli": "^2.2.0",
     "is-lambda": "^1.0.1",
